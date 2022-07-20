@@ -1,0 +1,108 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\EventoCliente;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class EventoClienteController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        $datosEventoCliente = DB::select('select * from (evento_clientes INNER JOIN eventos ON eventos.eve_id = evento_clientes.eve_id INNER JOIN arreglos ON arreglos.arr_id = evento_clientes.arr_id
+        INNER JOIN submenuses ON submenuses.sm_id = evento_clientes.sm_id) ORDER BY ec_fecha DESC');
+        
+        echo(json_encode($datosEventoCliente));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+        $datosEventoCliente = request()->except(['_token','eve_nombre','eve_descripcion','eve_estado','arr_nombre','arr_descripcion','arr_estado','men_id']);
+
+        EventoCliente::insert($datosEventoCliente);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\EventoCliente  $eventoCliente
+     * @return \Illuminate\Http\Response
+     */
+    public function show(EventoCliente $eventoCliente)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\EventoCliente  $eventoCliente
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($ec_id)
+    {
+        //
+        $eventoCliente= EventoCliente::where('ec_id','=',$ec_id)->get();
+        echo(json_encode($eventoCliente));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\EventoCliente  $eventoCliente
+     * @return \Illuminate\Http\Response
+     */
+    public function update($ec_id)
+    {
+        //
+        $datosEventoCliente = request()->except(['_token','_method']);
+        
+        EventoCliente::where('ec_id','=',$ec_id)->update($datosEventoCliente);
+    }
+
+    public function enable($ec_id)
+    {
+        EventoCliente::where('ec_id', '=', $ec_id)->update(['ec_estado' => 'Activo']);
+    }
+
+    public function disable($ec_id)
+    {
+        EventoCliente::where('ec_id', '=', $ec_id)->update(['ec_estado' => 'Inactivo']);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\EventoCliente  $eventoCliente
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(EventoCliente $eventoCliente)
+    {
+        //
+    }
+}
