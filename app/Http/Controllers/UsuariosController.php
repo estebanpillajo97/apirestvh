@@ -18,7 +18,7 @@ class UsuariosController extends Controller
     public function index()
     {
         //
-        $datosUsuarios= DB::table('usuarios')->join('roles','roles.rol_id','=','usuarios.rol_id')->select('*')->get();
+        $datosUsuarios= DB::table('usuarios')->join('roles','roles.rol_id','=','usuarios.rol_id')->get();
 
         echo(json_encode($datosUsuarios));
 
