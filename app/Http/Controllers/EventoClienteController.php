@@ -19,8 +19,9 @@ class EventoClienteController extends Controller
         //$datosEventoCliente = DB::select('select * from (evento_clientes INNER JOIN eventos ON eventos.eve_id = evento_clientes.eve_id INNER JOIN submenuses ON submenuses.sm_id = evento_clientes.sm_id) ORDER BY ec_fecha DESC');
         $datosEventoCliente = DB::table('evento_clientes')->join('eventos','eventos.eve_id','=','evento_clientes.eve_id')
         ->join('submenuses','submenuses.sm_id','=','evento_clientes.sm_id')
-        ->join('arreglos','arreglos.arr_id','=','evento_clientes.arr_id')
         ->join('tipo_cedulas','tipo_cedulas.tc_id','=','evento_clientes.tc_id')
+        ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
+        ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
         ->reorder('ec_fecha','desc')->get();
         echo(json_encode($datosEventoCliente));
     }
@@ -102,22 +103,26 @@ class EventoClienteController extends Controller
         //$eventoCliente = EventoCliente::select("*")->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->get();
         $eventoCliente = DB::table('evento_clientes')->join('eventos','eventos.eve_id','=','evento_clientes.eve_id')
         ->join('submenuses','submenuses.sm_id','=','evento_clientes.sm_id')
-        ->join('arreglos','arreglos.arr_id','=','evento_clientes.arr_id')
+        ->join('tipo_cedulas','tipo_cedulas.tc_id','=','evento_clientes.tc_id')
+        ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
+        ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
         ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->reorder('ec_fecha','desc')->get();
         echo(json_encode($eventoCliente));
     }
     public function activos(){
         $eventoCliente = DB::table('evento_clientes')->join('eventos','eventos.eve_id','=','evento_clientes.eve_id')
         ->join('submenuses','submenuses.sm_id','=','evento_clientes.sm_id')
-        ->join('arreglos','arreglos.arr_id','=','evento_clientes.arr_id')
         ->join('tipo_cedulas','tipo_cedulas.tc_id','=','evento_clientes.tc_id')
+        ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
+        ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
         ->where('ec_estado','=','Activo')->reorder('ec_fecha','desc')->get();
         echo(json_encode($eventoCliente));
     }
     public function inactivos(){
         $eventoCliente = DB::table('evento_clientes')->join('eventos','eventos.eve_id','=','evento_clientes.eve_id')
         ->join('submenuses','submenuses.sm_id','=','evento_clientes.sm_id')
-        ->join('arreglos','arreglos.arr_id','=','evento_clientes.arr_id')
+        ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
+        ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
         ->join('tipo_cedulas','tipo_cedulas.tc_id','=','evento_clientes.tc_id')
         ->where('ec_estado','=','Inactivo')->reorder('ec_fecha','desc')->get();
         echo(json_encode($eventoCliente));

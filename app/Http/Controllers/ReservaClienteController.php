@@ -20,6 +20,7 @@ class ReservaClienteController extends Controller
         $datosReservaCliente = DB::table('reserva_clientes')
         ->join('reservaciones','reservaciones.res_id','=','reserva_clientes.res_id')
         ->join('tipo_cedulas','tipo_cedulas.tc_id','=','reserva_clientes.tc_id')
+        ->join('num_personas_res','num_personas_res.np_id','=','reserva_clientes.np_id')
         ->reorder('rc_fecha','desc')->get();
         echo(json_encode($datosReservaCliente));
     }
@@ -102,6 +103,8 @@ class ReservaClienteController extends Controller
         //$reservaCliente = ReservaCliente::select("*")->join('reserva_clientes','reservaciones.res_id','=','reservaciones.res_id')->whereBetween('rc_fecha',[$rc_fecha,$rc_fechaH])->get();
         $reservaCliente = DB::table('reserva_clientes')
         ->join('reservaciones','reservaciones.res_id','=','reserva_clientes.res_id')
+        ->join('tipo_cedulas','tipo_cedulas.tc_id','=','reserva_clientes.tc_id')
+        ->join('num_personas_res','num_personas_res.np_id','=','reserva_clientes.np_id')
         ->whereBetween('rc_fecha',[$rc_fecha,$rc_fechaH])->reorder('rc_fecha','desc')->get();
         echo(json_encode($reservaCliente));
     }
@@ -112,6 +115,7 @@ class ReservaClienteController extends Controller
         $reservaCliente = DB::table('reserva_clientes')
         ->join('reservaciones','reservaciones.res_id','=','reserva_clientes.res_id')
         ->join('tipo_cedulas','tipo_cedulas.tc_id','=','reserva_clientes.tc_id')
+        ->join('num_personas_res','num_personas_res.np_id','=','reserva_clientes.np_id')
         ->where('rc_estado','=','Activo')->reorder('rc_fecha','desc')->get();
         echo(json_encode($reservaCliente));
     }
@@ -119,6 +123,7 @@ class ReservaClienteController extends Controller
         $reservaCliente = DB::table('reserva_clientes')
         ->join('reservaciones','reservaciones.res_id','=','reserva_clientes.res_id')
         ->join('tipo_cedulas','tipo_cedulas.tc_id','=','reserva_clientes.tc_id')
+        ->join('num_personas_res','num_personas_res.np_id','=','reserva_clientes.np_id')
         ->where('rc_estado','=','Inactivo')->reorder('rc_fecha','desc')->get();
         echo(json_encode($reservaCliente));
     }

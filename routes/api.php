@@ -43,6 +43,9 @@ Route::get('/eventos_cliente_activos','EventoClienteController@activos');
 Route::get('/eventos_cliente_inactivos','EventoClienteController@inactivos');
 Route::get('/reservas_cliente_activos','ReservaClienteController@activos');
 Route::get('/reservas_cliente_inactivos','ReservaClienteController@inactivos');
+Route::get('/numAdultos','NumAdultosController@index');
+Route::get('/numNinios','NumNiniosController@index');
+Route::get('/numpersonasres','NumPersonasResController@index');
 //Route::post('/usuarios_verify','UsuariosController@verificar');
 
 //crear
