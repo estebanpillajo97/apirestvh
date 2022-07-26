@@ -26,7 +26,7 @@ class CreateEventoClientesTable extends Migration
             $table->string('ec_descripcion');
             $table->string('ec_estado');
             $table->integer('sm_id');
-            $table->string('tc_id');
+            $table->integer('tc_id');
             $table->timestamps();
         });
     }

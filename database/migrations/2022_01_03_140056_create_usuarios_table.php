@@ -21,7 +21,7 @@ class CreateUsuariosTable extends Migration
             $table->string('usu_telefono');
             $table->string('usu_usuario');
             $table->string('usu_password');
-            $table->number('rol_id');
+            $table->integer('rol_id');
             $table->string('usu_estado');
             $table->timestamps();
         });
