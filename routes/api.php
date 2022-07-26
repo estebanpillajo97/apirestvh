@@ -36,6 +36,13 @@ Route::get('/usuarios','UsuariosController@index');
 Route::get('/usuarios_sin_rol','UsuariosController@sinRoles');
 Route::get('/menus/listado','MenusController@mostrarTodosMenus');
 Route::get('/submenus_select/{men_id}','SubmenusController@select');
+Route::get('/eventos_cliente_filtrado/{ec_fecha}_{ec_fechaH}','EventoClienteController@filtradoFechas');
+Route::get('/reservas_cliente_filtrado/{rc_fecha}_{rc_fechaH}','ReservaClienteController@filtradoFechas');
+Route::get('/tipo_cedula','TipoCedulaController@index');
+Route::get('/eventos_cliente_activos','EventoClienteController@activos');
+Route::get('/eventos_cliente_inactivos','EventoClienteController@inactivos');
+Route::get('/reservas_cliente_activos','ReservaClienteController@activos');
+Route::get('/reservas_cliente_inactivos','ReservaClienteController@inactivos');
 //Route::post('/usuarios_verify','UsuariosController@verificar');
 
 //crear

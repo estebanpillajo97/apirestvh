@@ -18,12 +18,14 @@ class CreateReservaClientesTable extends Migration
             $table->integer('res_id');
             $table->string('rc_nombreCliente');
             $table->string('rc_cedula');
+            $table->number('tc_id');
             $table->string('rc_celular');
             $table->string('rc_numPersonas');
             $table->date('rc_fecha');
             $table->time('rc_hora');
             $table->string('rc_descripcion');
             $table->string('rc_estado');
+            $table->string('rc_tipoCedula');
             $table->timestamps();
         });
     }

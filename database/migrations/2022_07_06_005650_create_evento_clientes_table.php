@@ -25,7 +25,8 @@ class CreateEventoClientesTable extends Migration
             $table->time('ec_hora');
             $table->string('ec_descripcion');
             $table->string('ec_estado');
-            $table->string('sm_submenus');
+            $table->integer('sm_id');
+            $table->string('tc_id');
             $table->timestamps();
         });
     }

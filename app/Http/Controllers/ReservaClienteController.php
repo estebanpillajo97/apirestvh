@@ -16,8 +16,11 @@ class ReservaClienteController extends Controller
     public function index()
     {
         //
-        $datosReservaCliente = DB::select('select * from (reserva_clientes INNER JOIN reservaciones ON reservaciones.res_id = reserva_clientes.rc_id) ORDER BY rc_fecha DESC');
-        
+        //$datosReservaCliente = DB::select('select * from (reserva_clientes INNER JOIN reservaciones ON reservaciones.res_id = reserva_clientes.res_id) ORDER BY rc_fecha DESC');
+        $datosReservaCliente = DB::table('reserva_clientes')
+        ->join('reservaciones','reservaciones.res_id','=','reserva_clientes.res_id')
+        ->join('tipo_cedulas','tipo_cedulas.tc_id','=','reserva_clientes.tc_id')
+        ->reorder('rc_fecha','desc')->get();
         echo(json_encode($datosReservaCliente));
     }
 
@@ -92,6 +95,32 @@ class ReservaClienteController extends Controller
     public function disable($rc_id)
     {
         ReservaCliente::where('rc_id', '=', $rc_id)->update(['rc_estado' => 'Inactivo']);
+    }
+
+    public function filtradoFechas($rc_fecha,$rc_fechaH){
+        //$reservaCliente = DB::select('select * from (reserva_clientes INNER JOIN reservaciones ON reservaciones.res_id = reserva_clientes.res_id)'->whereBetween('rc_fecha',[$rc_fecha,$rc_fechaH]));
+        //$reservaCliente = ReservaCliente::select("*")->join('reserva_clientes','reservaciones.res_id','=','reservaciones.res_id')->whereBetween('rc_fecha',[$rc_fecha,$rc_fechaH])->get();
+        $reservaCliente = DB::table('reserva_clientes')
+        ->join('reservaciones','reservaciones.res_id','=','reserva_clientes.res_id')
+        ->whereBetween('rc_fecha',[$rc_fecha,$rc_fechaH])->reorder('rc_fecha','desc')->get();
+        echo(json_encode($reservaCliente));
+    }
+
+    public function activos(){
+        //$reservaCliente = ReservaCliente::where('rc_estado','=','Activo')->get();
+        //$reservaCliente = DB::select('select * from (reserva_clientes INNER JOIN reservaciones ON reservaciones.res_id = reserva_clientes.res_id) where rc_estado = "Activo" ORDER BY rc_fecha DESC');
+        $reservaCliente = DB::table('reserva_clientes')
+        ->join('reservaciones','reservaciones.res_id','=','reserva_clientes.res_id')
+        ->join('tipo_cedulas','tipo_cedulas.tc_id','=','reserva_clientes.tc_id')
+        ->where('rc_estado','=','Activo')->reorder('rc_fecha','desc')->get();
+        echo(json_encode($reservaCliente));
+    }
+    public function inactivos(){
+        $reservaCliente = DB::table('reserva_clientes')
+        ->join('reservaciones','reservaciones.res_id','=','reserva_clientes.res_id')
+        ->join('tipo_cedulas','tipo_cedulas.tc_id','=','reserva_clientes.tc_id')
+        ->where('rc_estado','=','Inactivo')->reorder('rc_fecha','desc')->get();
+        echo(json_encode($reservaCliente));
     }
 
     /**
