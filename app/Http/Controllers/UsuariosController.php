@@ -18,7 +18,7 @@ class UsuariosController extends Controller
     public function index()
     {
         //
-        $datosUsuarios= DB::select('select * from heroku_8f690f1e9959762.usuarios INNER JOIN heroku_8f690f1e9959762.roles on heroku_8f690f1e9959762.roles.rol_id=heroku_8f690f1e9959762.usuarios.rol_id');
+        $datosUsuarios= DB::table('usuarios')->join('roles','roles.rol_id','=','usuarios.rol_id')->get();
 
         echo(json_encode($datosUsuarios));
 
