@@ -18,7 +18,7 @@ class UsuariosController extends Controller
     public function index()
     {
         //
-        $datosUsuarios= DB::select('select * from usuarios');
+        $datosUsuarios= DB::table('usuarios')->get();
 
         echo(json_encode($datosUsuarios));
 
