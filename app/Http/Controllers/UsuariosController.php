@@ -82,7 +82,6 @@ class UsuariosController extends Controller
                 $usuariosMostrar = usuarios::where('usu_usuario', '=', $datosU['usu_usuario'])
                 ->where('usu_password', '=', $item[0]->usu_password)->get();
                 return response()->json($usuariosMostrar, 200);//bien
-                echo(json_encode("bien"));
             }
         } else {
             return response()->json("403", 200);//está algo mal
