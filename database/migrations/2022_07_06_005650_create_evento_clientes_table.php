@@ -20,13 +20,14 @@ class CreateEventoClientesTable extends Migration
             $table->string('ec_nombreCliente');
             $table->string('ec_cedula');
             $table->string('ec_celular');
-            $table->string('ec_numPersonas');
             $table->date('ec_fecha');
             $table->time('ec_hora');
             $table->string('ec_descripcion');
             $table->string('ec_estado');
             $table->integer('sm_id');
             $table->integer('tc_id');
+            $table->integer('na_id');
+            $table->integer('nn_id');
             $table->timestamps();
         });
     }

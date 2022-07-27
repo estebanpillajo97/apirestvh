@@ -25,7 +25,6 @@ class CreateReservaClientesTable extends Migration
             $table->time('rc_hora');
             $table->string('rc_descripcion');
             $table->string('rc_estado');
-            $table->string('rc_tipoCedula');
             $table->timestamps();
         });
     }
