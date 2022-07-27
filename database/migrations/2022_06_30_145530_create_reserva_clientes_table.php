@@ -20,7 +20,7 @@ class CreateReservaClientesTable extends Migration
             $table->string('rc_cedula');
             $table->integer('tc_id');
             $table->string('rc_celular');
-            $table->string('rc_numPersonas');
+            $table->integer('np_id');
             $table->date('rc_fecha');
             $table->time('rc_hora');
             $table->string('rc_descripcion');
