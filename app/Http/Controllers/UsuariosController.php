@@ -76,10 +76,9 @@ class UsuariosController extends Controller
     {
     // Este vale para comprobar el correo
         $datosU = $request->all();
-        $item = usuarios::where('usu_usuario', '=', $datosU['usu_usuario'])->where('usu_estado','=','Activo')->get('usu_password');  
-        // if para ver si el user no existe
+        $item = usuarios::where('usu_usuario', '=', $datosU['usu_usuario'])->where('usu_estado','=','Activo')->get('usu_password');  // if para ver si el user no existe
         if (!$item->isEmpty()) {
-            if (Hash::check($datosU['usu_password'], $item[0]->usu_password) == false) {
+            if (Hash::check($datosU['usu_password'], $item[0]->usu_password)) {
                 $usuariosMostrar = usuarios::where('usu_usuario', '=', $datosU['usu_usuario'])
                 ->where('usu_password', '=', $item[0]->usu_password)->get();
                 return response()->json($usuariosMostrar, 200);//bien
