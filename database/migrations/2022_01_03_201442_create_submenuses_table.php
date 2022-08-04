@@ -19,6 +19,7 @@ class CreateSubmenusesTable extends Migration
             $table->string('sm_nombre');
             $table->string('sm_descripcion');
             $table->float('sm_precio');
+            $table->integer('sm_cantidadPromedio');
             $table->string('sm_estado');
             $table->timestamps();
         });
