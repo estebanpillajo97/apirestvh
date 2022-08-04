@@ -16,7 +16,7 @@ class SubmenusController extends Controller
     public function index()
     {
         //order by sm_nombre desc
-        $datosSubmenus = DB::select('select * from (submenuses INNER JOIN menuses ON menuses.men_id=submenuses.men_id) ');
+        $datosSubmenus = DB::select('select * from (submenuses INNER JOIN menuses ON menuses.men_id=submenuses.men_id)');
 
         echo(json_encode($datosSubmenus));
     }
