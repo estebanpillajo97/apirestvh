@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 //Route::resource('roles', RolesController::class);
 //mostrar
 Route::get('/arreglos','ArreglosController@index');
+Route::get('/aforo','AforoController@index');
 Route::get('/eventos','EventosController@index');
 Route::get('/eventos_cliente','EventoClienteController@index');
 Route::get('/menus','MenusController@index');
@@ -62,6 +63,8 @@ Route::post('/usuarios/verify','UsuariosController@comprobarLogin');
 //editar
 Route::get('/arreglos/{arr_id}','ArreglosController@edit');
 Route::post('/arreglos/{arr_id}', 'ArreglosController@update');
+Route::get('/aforo/{af_id}','AforoController@edit');
+Route::post('/aforo/{af_id}', 'AforoController@update');
 Route::get('/eventos/{eve_id}','EventosController@edit');
 Route::post('/eventos/{eve_id}', 'EventosController@update');
 Route::get('/eventos_cliente/{ec_id}','EventoClienteController@edit');
