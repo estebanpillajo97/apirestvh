@@ -99,7 +99,10 @@ class SubmenusController extends Controller
         $submenus=Submenus::where('men_id','=',$men_id)->get();
         echo(json_encode($submenus));
     }
-
+    public function inventarioSubmenu($sm_id,$ec_fecha){
+        $submenus=DB::table('submenuses')->where('sm_id','=',$sm_id)->where('ec_fecha','=',$ec_fecha)
+        ->count('sm_nombre')->get();
+    }
     /**
      * Remove the specified resource from storage.
      *

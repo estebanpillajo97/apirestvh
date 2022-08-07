@@ -47,6 +47,7 @@ Route::get('/reservas_cliente_inactivos','ReservaClienteController@inactivos');
 Route::get('/numAdultos','NumAdultosController@index');
 Route::get('/numNinios','NumNiniosController@index');
 Route::get('/numpersonasres','NumPersonasResController@index');
+Route::get('submenu_inventario/{sm_id}_{ec_fecha}','SubmenusController@inventarioSubmenu');
 //Route::post('/usuarios_verify','UsuariosController@verificar');
 
 //crear
