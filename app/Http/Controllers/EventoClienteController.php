@@ -127,7 +127,10 @@ class EventoClienteController extends Controller
         ->where('ec_estado','=','Inactivo')->reorder('ec_fecha','desc')->get();
         echo(json_encode($eventoCliente));
     }
-
+    public function inventarioSubmenu($sm_id,$ec_fecha){
+        $submenus=DB::table('evento_clientes')->where('sm_id','=',$sm_id)->where('ec_fecha','=',$ec_fecha)
+        ->count('sm_nombre')->get();
+    }
     /**
      * Remove the specified resource from storage.
      *
