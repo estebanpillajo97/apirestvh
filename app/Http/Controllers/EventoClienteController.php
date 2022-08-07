@@ -130,6 +130,7 @@ class EventoClienteController extends Controller
     public function inventarioSubmenu($sm_id,$ec_fecha){
         $submenus=DB::table('evento_clientes')->where('sm_id','=',$sm_id)->where('ec_fecha','=',$ec_fecha)
         ->count('sm_id');
+        echo(json_encode($submenus));
     }
     /**
      * Remove the specified resource from storage.
