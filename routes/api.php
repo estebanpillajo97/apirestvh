@@ -48,6 +48,7 @@ Route::get('/numAdultos','NumAdultosController@index');
 Route::get('/numNinios','NumNiniosController@index');
 Route::get('/numpersonasres','NumPersonasResController@index');
 Route::get('submenu_inventario/{sm_id}_{ec_fecha}_{ec_fechaH}','EventoClienteController@inventarioSubmenu');
+Route::get('submenus/listado','SubmenusController@mostrarTodo');
 //Route::post('/usuarios_verify','UsuariosController@verificar');
 
 //crear
