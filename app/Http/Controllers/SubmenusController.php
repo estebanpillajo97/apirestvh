@@ -16,8 +16,13 @@ class SubmenusController extends Controller
     public function index()
     {
         //order by sm_nombre desc
-        $datosSubmenus = DB::select('select * from (submenuses INNER JOIN menuses ON menuses.men_id=submenuses.men_id)');
+        $datosSubmenus = Submenus::where('sm_estado','=','Activo')->get();
 
+        echo(json_encode($datosSubmenus));
+    }
+    public function mostrarTodo(){
+        $datosSubmenus = DB::table('submenuses')
+        ->join('menuses','menuses.men_id','=','submenuses.men_id')->get();
         echo(json_encode($datosSubmenus));
     }
 
