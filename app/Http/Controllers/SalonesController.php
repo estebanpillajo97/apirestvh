@@ -38,6 +38,9 @@ class SalonesController extends Controller
     public function store(Request $request)
     {
         //
+        $datosSalones = request()->except(['_token']);
+
+        Salones::insert($datosSalones);
     }
 
     /**
@@ -57,9 +60,11 @@ class SalonesController extends Controller
      * @param  \App\salones  $salones
      * @return \Illuminate\Http\Response
      */
-    public function edit(salones $salones)
+    public function edit($sa_id)
     {
         //
+        $salones= Salones::where('sa_id','=',$sa_id)->get();
+        echo(json_encode($salones));
     }
 
     /**
@@ -69,9 +74,11 @@ class SalonesController extends Controller
      * @param  \App\salones  $salones
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, salones $salones)
+    public function update($sa_id)
     {
         //
+        $datosSalones = request()->except(['_token','_method']);
+        Arreglos::where('sa_id','=',$sa_id)->update($datosSalones);
     }
 
     /**
