@@ -129,7 +129,7 @@ class EventoClienteController extends Controller
     }
     public function inventarioSubmenu($sm_id,$ec_fecha,$ec_fechaH){
         $submenus=DB::table('evento_clientes')->where('sm_id','=',$sm_id)
-        ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->count('sm_id');
+        ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('na_numeroAdultos');
         echo(json_encode($submenus));
     }
     /**
