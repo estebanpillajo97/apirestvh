@@ -130,10 +130,12 @@ class EventoClienteController extends Controller
     public function inventarioSubmenu($sm_id,$ec_fecha,$ec_fechaH){
         $submenusAdultos=DB::table('evento_clientes')
         ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
+        ->where('ec_estado','=','Activo')
         ->where('sm_id','=',$sm_id)
         ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('na_numeroAdultos');
         $submenusNinios=DB::table('evento_clientes')
         ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
+        ->where('ec_estado','=','Activo')
         ->where('sm_id','=',$sm_id)
         ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('nn_numeroNinios');
         $submenusTotal=$submenusAdultos+$submenusNinios;
