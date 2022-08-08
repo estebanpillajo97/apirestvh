@@ -151,7 +151,8 @@ class EventoClienteController extends Controller
         ->join('tipo_cedulas','tipo_cedulas.tc_id','=','evento_clientes.tc_id')
         ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
         ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
-        ->where('ec_estado','=','Activo')->where('submenuses.sm_id','=',$sm_id)->reorder('ec_fecha','desc')->get();
+        ->where('ec_estado','=','Activo')->where('submenuses.sm_id','=',$sm_id)
+        ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->reorder('ec_fecha','desc')->get();
         echo(json_encode($datosEventoCliente));
     }
     /**
