@@ -127,19 +127,22 @@ class EventoClienteController extends Controller
         ->where('ec_estado','=','Inactivo')->reorder('ec_fecha','desc')->get();
         echo(json_encode($eventoCliente));
     }
-    public function inventarioSubmenu($sm_id,$ec_fecha,$ec_fechaH){
+    public function inventarioSubmenuAdultos($sm_id,$ec_fecha,$ec_fechaH){
         $submenusAdultos=DB::table('evento_clientes')
         ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
         ->where('ec_estado','=','Activo')
         ->where('sm_id','=',$sm_id)
         ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('na_numeroAdultos');
+
+        echo(json_encode($submenusAdultos));
+    }
+    public function inventarioSubmenuNinios($sm_id,$ec_fecha,$ec_fechaH){
         $submenusNinios=DB::table('evento_clientes')
         ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
         ->where('ec_estado','=','Activo')
         ->where('sm_id','=',$sm_id)
         ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('nn_numeroNinios');
 
-        echo(json_encode($submenusAdultos));
         echo(json_encode($submenusNinios));
     }
     /**
