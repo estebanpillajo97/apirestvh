@@ -138,8 +138,7 @@ class EventoClienteController extends Controller
         ->where('ec_estado','=','Activo')
         ->where('sm_id','=',$sm_id)
         ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('nn_numeroNinios');
-        $submenusTotal=$submenusAdultos+$submenusNinios;
-        echo(json_encode($submenusTotal));
+        echo(json_encode("Adultos:"+ $submenusAdultos+ "Ninios:" +$submenusNinios));
     }
     /**
      * Remove the specified resource from storage.
