@@ -145,6 +145,15 @@ class EventoClienteController extends Controller
 
         echo(json_encode($submenusNinios));
     }
+    public function inventarioSubmenuTabla($sm_id,$ec_fecha,$ec_fechaH){
+        $datosEventoCliente = DB::table('evento_clientes')->join('eventos','eventos.eve_id','=','evento_clientes.eve_id')
+        ->join('submenuses','submenuses.sm_id','=','evento_clientes.sm_id')
+        ->join('tipo_cedulas','tipo_cedulas.tc_id','=','evento_clientes.tc_id')
+        ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
+        ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
+        -where('ec_estado','=','Activo')->reorder('ec_fecha','desc')->get();
+        echo(json_encode($datosEventoCliente));
+    }
     /**
      * Remove the specified resource from storage.
      *
