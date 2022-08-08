@@ -132,7 +132,7 @@ class EventoClienteController extends Controller
         ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
         ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
         ->where('sm_id','=',$sm_id)
-        ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('na_numeroAdultos'+'nn_numeroNinios');
+        ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('na_numeroAdultos');
         echo(json_encode($submenus));
     }
     /**
