@@ -128,12 +128,16 @@ class EventoClienteController extends Controller
         echo(json_encode($eventoCliente));
     }
     public function inventarioSubmenu($sm_id,$ec_fecha,$ec_fechaH){
-        $submenus=DB::table('evento_clientes')
+        $submenusAdultos=DB::table('evento_clientes')
         ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
-        ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
         ->where('sm_id','=',$sm_id)
         ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('na_numeroAdultos');
-        echo(json_encode($submenus));
+        $submenusNinios=DB::table('evento_clientes')
+        ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
+        ->where('sm_id','=',$sm_id)
+        ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('nn_numeroNinios');
+        $submenusTotal=$submenusAdultos+$submenusNinios;
+        echo(json_encode($submenusTotal));
     }
     /**
      * Remove the specified resource from storage.
