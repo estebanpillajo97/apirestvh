@@ -127,7 +127,12 @@ class ReservaClienteController extends Controller
         ->where('rc_estado','=','Inactivo')->reorder('rc_fecha','desc')->get();
         echo(json_encode($reservaCliente));
     }
-
+    public function inventarioAforo($rc_fecha,$rc_fechaH){
+        $reservaCliente=DB::table('reserva_clientes')
+        ->join('num_personas_res','num_personas_res.np_id','=','reserva_clientes.np_id')
+        ->whereBetween('rc_fecha',[$rc_fecha,$rc_fechaH])->sum('na_numero_personas_res');
+        echo(json_encode($reservaCliente));
+    }
     /**
      * Remove the specified resource from storage.
      *
