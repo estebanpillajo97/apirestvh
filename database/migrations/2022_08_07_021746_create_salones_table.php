@@ -15,7 +15,7 @@ class CreateSalonesTable extends Migration
     {
         Schema::create('salones', function (Blueprint $table) {
             $table->increments('sa_id');
-            $table->string('sa_planta');
+            $table->string('sa_nombre');
             $table->integer('sa_capacidad');
             $table->string('sa_disponibilidad');
             $table->string('estado');
