@@ -15,7 +15,7 @@ class CreateNumNiniosTable extends Migration
     {
         Schema::create('num_ninios', function (Blueprint $table) {
             $table->increments('nn_id');
-            $table->string('nn_numeroNinios');
+            $table->integer('nn_numeroNinios');
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ class CreateNumAdultosTable extends Migration
     {
         Schema::create('num_adultos', function (Blueprint $table) {
             $table->increments('na_id');
-            $table->string('na_numeroAdultos');
+            $table->integer('na_numeroAdultos');
             $table->timestamps();
         });
     }
