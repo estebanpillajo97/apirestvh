@@ -17,6 +17,7 @@ class CreateMenusesTable extends Migration
             $table->increments('men_id');
             $table->string('men_foto');
             $table->string('men_nombre');
+            $table->integer('men_cantidadPromedio');
             $table->text('men_descripcion');
             $table->string('men_estado');
             $table->timestamps();
