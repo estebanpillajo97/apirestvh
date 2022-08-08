@@ -86,6 +86,8 @@ Route::get('/submenus/{sm_id}','SubmenusController@edit');
 Route::post('/submenus/{sm_id}', 'SubmenusController@update');
 Route::get('/usuarios/{usu_id}','UsuariosController@edit');
 Route::post('/usuarios/{usu_id}', 'UsuariosController@update');
+Route::get('/salones/{sa_id}','SalonesController@edit');
+Route::post('/salones/{sa_id}', 'SalonesController@update');
 //Activar e Inactivar
 Route::post('/arreglos/{arr_id}/disable','ArreglosController@disable');
 Route::post('/arreglos/{arr_id}/enable','ArreglosController@enable');

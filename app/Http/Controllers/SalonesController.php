@@ -78,7 +78,7 @@ class SalonesController extends Controller
     {
         //
         $datosSalones = request()->except(['_token','_method']);
-        Arreglos::where('sa_id','=',$sa_id)->update($datosSalones);
+        Salones::where('sa_id','=',$sa_id)->update($datosSalones);
     }
 
     /**
