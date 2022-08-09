@@ -16,8 +16,9 @@ class SubmenusController extends Controller
     public function index()
     {
         //order by sm_nombre desc
-        $datosSubmenus = Submenus::where('sm_estado','=','Activo')->get();
-
+        $datosSubmenus = DB::table('submenuses')
+        ->where('sm_estado','=','Activo')
+        ->join('menuses','menuses.men_id','=','submenuses.men_id')->get();
         echo(json_encode($datosSubmenus));
     }
     public function mostrarTodo(){
