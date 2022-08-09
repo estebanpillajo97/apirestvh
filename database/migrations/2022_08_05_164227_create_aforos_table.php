@@ -15,7 +15,7 @@ class CreateAforosTable extends Migration
     {
         Schema::create('aforos', function (Blueprint $table) {
             $table->increments('af_id');
-            $table->integer('af_numeroAforo');
+            $table->integer('sa_id');
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\aforo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AforoController extends Controller
 {
@@ -15,7 +16,10 @@ class AforoController extends Controller
     public function index()
     {
         //
-        $datosAforo = Aforo::get();
+        //$datosAforo = Aforo::get();
+        $datosAforo = DB::table('aforo')
+        ->join('salones','salones.sa_id','=','aforo.sa_id')
+        ->SUM('salones.sa_capacidad')->get();
         echo(json_encode($datosAforo));
     }
 
