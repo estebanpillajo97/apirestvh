@@ -18,8 +18,8 @@ class AforoController extends Controller
         //
         //$datosAforo = Aforo::get();
         $datosAforo = DB::table('aforos')
-        ->join('salones','salones.sa_id','=','aforo.sa_id')
-        ->SUM('sa_capacidad');
+        ->join('salones','salones.sa_id','=','aforos.sa_id')
+        ->SUM('sa_capacidad')->get();
         echo(json_encode($datosAforo));
     }
 
