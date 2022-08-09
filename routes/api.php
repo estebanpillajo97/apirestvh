@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 //Route::resource('roles', RolesController::class);
 //mostrar
 Route::get('/arreglos','ArreglosController@index');
-Route::get('/aforo','AforoController@index');
+Route::get('/aforo','SalonesController@aforo');
 Route::get('/eventos','EventosController@index');
 Route::get('/eventos_cliente','EventoClienteController@index');
 Route::get('/menus','MenusController@index');

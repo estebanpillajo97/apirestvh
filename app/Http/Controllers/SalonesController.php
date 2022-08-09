@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\salones;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SalonesController extends Controller
 {
@@ -17,6 +18,13 @@ class SalonesController extends Controller
         //
         $salones = Salones::get();
         echo(json_encode($salones));
+    }
+    public function aforo(){
+        $datosAforo = DB::table('salones')
+        ->where('sa_estado','=','Activo')
+        ->where('sa_disponibilidad','=','Disponible')
+        ->SUM('sa_capacidad');
+        echo(json_encode($datosAforo));
     }
 
     /**
