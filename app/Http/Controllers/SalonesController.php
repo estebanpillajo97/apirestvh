@@ -80,6 +80,15 @@ class SalonesController extends Controller
         $datosSalones = request()->except(['_token','_method']);
         Salones::where('sa_id','=',$sa_id)->update($datosSalones);
     }
+    public function enable($sa_id)
+    {
+        Salones::where('sa_id', '=', $sa_id)->update(['sa_estado' => 'Activo']);
+    }
+
+    public function disable($sa_id)
+    {
+        Salones::where('sa_id', '=', $sa_id)->update(['sa_estado' => 'Inactivo']);
+    }
 
     /**
      * Remove the specified resource from storage.

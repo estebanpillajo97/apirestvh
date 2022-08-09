@@ -106,3 +106,5 @@ Route::post('/submenus/{sm_id}/disable','SubmenusController@disable');
 Route::post('/submenus/{sm_id}/enable','SubmenusController@enable');
 Route::post('/usuarios/{usu_id}/disable','UsuariosController@disable');
 Route::post('/usuarios/{usu_id}/enable','UsuariosController@enable');
+Route::post('/salones/{sa_id}/disable','SalonesController@disable');
+Route::post('/salones/{sa_id}/enable','SalonesController@enable');

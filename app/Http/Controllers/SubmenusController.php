@@ -45,7 +45,7 @@ class SubmenusController extends Controller
     public function store(Request $request)
     {
         //
-        $datosSubmenus = request()->except(['_token','men_nombre','men_foto','men_descripcion','men_estado']);
+        $datosSubmenus = request()->except(['_token','men_nombre','men_foto','men_cantidadPromedio','men_descripcion','men_estado']);
 
         Submenus::insert($datosSubmenus);
     }
