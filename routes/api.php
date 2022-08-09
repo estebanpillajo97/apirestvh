@@ -69,8 +69,6 @@ Route::post('/usuarios/verify','UsuariosController@comprobarLogin');
 //editar
 Route::get('/arreglos/{arr_id}','ArreglosController@edit');
 Route::post('/arreglos/{arr_id}', 'ArreglosController@update');
-Route::get('/aforo/{af_id}','AforoController@edit');
-Route::post('/aforo/{af_id}', 'AforoController@update');
 Route::get('/eventos/{eve_id}','EventosController@edit');
 Route::post('/eventos/{eve_id}', 'EventosController@update');
 Route::get('/eventos_cliente/{ec_id}','EventoClienteController@edit');

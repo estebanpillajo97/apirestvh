@@ -17,8 +17,7 @@ class AforoController extends Controller
     {
         //
         //$datosAforo = Aforo::get();
-        $datosAforo = DB::table('aforos')
-        ->join('salones','salones.sa_id','=','aforos.sa_id')
+        $datosAforo = DB::table('salones')
         ->SUM('sa_capacidad');
         echo(json_encode($datosAforo));
     }
@@ -61,11 +60,10 @@ class AforoController extends Controller
      * @param  \App\aforo  $aforo
      * @return \Illuminate\Http\Response
      */
-    public function edit($af_id)
+    public function edit()
     {
         //
-        $aforo= Aforo::where('af_id','=',$af_id)->get();
-        echo(json_encode($aforo));
+
     }
 
     /**
@@ -75,11 +73,10 @@ class AforoController extends Controller
      * @param  \App\aforo  $aforo
      * @return \Illuminate\Http\Response
      */
-    public function update($af_id)
+    public function update()
     {
         //
-        $datosAforo = request()->except(['_token','_method']);
-        Aforo::where('af_id','=',$af_id)->update($datosAforo);
+
     }
 
     /**
