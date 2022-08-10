@@ -46,6 +46,10 @@ class ReservaClienteController extends Controller
         //
         $datosReservaCliente = request()->except(['_token','res_nombre','res_descripcion','res_estado']);
 
+        if($request->hasFile('rc_comprobante')){
+            $datosReservaCliente['rc_comprobante']=$request->file('rc_comprobante')->store('comprobante','public');
+        }
+
         ReservaCliente::insert($datosReservaCliente);
     }
 
