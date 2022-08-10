@@ -26,18 +26,18 @@ class SalonesController extends Controller
         ->SUM('sa_capacidad');
         echo(json_encode($datosAforo));
     }
-    public function aforoReservasEventos($rc_fecha){
+    public function aforoReservasEventos($fecha){
         $datosAforoRC = DB::table('reserva_clientes')
         ->join('num_personas_res','num_personas_res.np_id','=','reserva_clientes.np_id')
-        ->where('rc_fecha','=',$rc_fecha)->SUM('np_numeroPersonas');
+        ->where('rc_fecha','=',$fecha)->SUM('np_numeroPersonas');
         echo(json_encode($datosAforoRC));
         $datosAforoAdultosEC = DB::table('evento_clientes')
         ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
-        ->where('rc_fecha','=',$rc_fecha)->SUM('na_numeroAdultos');
+        ->where('rc_fecha','=',$fecha)->SUM('na_numeroAdultos');
         echo(json_encode($datosAforoAdultosEC));
         $datosAforoNiniosEC = DB::table('evento_clientes')
         ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
-        ->where('rc_fecha','=',$rc_fecha)->SUM('na_numeroNinios');
+        ->where('rc_fecha','=',$fecha)->SUM('na_numeroNinios');
         echo(json_encode($datosAforoNiniosEC));
 
     }

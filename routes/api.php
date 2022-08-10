@@ -53,6 +53,7 @@ Route::get('/submenu_inventario_tabla/{sm_id}_{ec_fecha}_{ec_fechaH}','EventoCli
 //Route::get('/reserva_cliente_aforo/{rc_fecha}_{rc_fechaH}', 'ReservaClienteController@inventarioAforo');
 Route::get('/submenus/listado','SubmenusController@mostrarTodo');
 Route::get('/salones','SalonesController@index');
+Route::get('/aforo_reservas_eventos/{fecha}','SalonesController@aforoReservasEventos');
 //Route::post('/usuarios_verify','UsuariosController@verificar');
 
 //crear
