@@ -39,7 +39,9 @@ class SalonesController extends Controller
         ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
         ->where('ec_fecha','=',$fecha)->SUM('nn_numeroNinios');
         echo(json_encode($datosAforoNiniosEC));
-        
+
+        $salidaAforo=$datosAforoRC+$datosAforoAdultosEC+$datosAforoNiniosEC;
+        echo(json_encode($salidaAforo));
     }
 
     /**
