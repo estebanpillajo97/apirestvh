@@ -65,6 +65,7 @@ Route::post('/reservas_cliente','ReservaClienteController@store');
 Route::post('/roles', 'RolesController@store');
 Route::post('/submenus','SubmenusController@store');
 Route::post('/usuarios','UsuariosController@store');
+Route::post('/salones','SalonesController@store');
 Route::post('/usuarios/verify','UsuariosController@comprobarLogin');
 //editar
 Route::get('/arreglos/{arr_id}','ArreglosController@edit');
