@@ -21,6 +21,7 @@ class AforoController extends Controller
         ->SUM('sa_capacidad');
         echo(json_encode($datosAforo));
     }
+    
 
     /**
      * Show the form for creating a new resource.
