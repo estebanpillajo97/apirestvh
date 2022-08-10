@@ -37,7 +37,7 @@ class SalonesController extends Controller
         echo(json_encode($datosAforoAdultosEC));
         $datosAforoNiniosEC = DB::table('evento_clientes')
         ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
-        ->where('ec_fecha','=',$fecha)->SUM('na_numeroNinios');
+        ->where('ec_fecha','=',$fecha)->SUM('nn_numeroNinios');
         echo(json_encode($datosAforoNiniosEC));
 
     }
