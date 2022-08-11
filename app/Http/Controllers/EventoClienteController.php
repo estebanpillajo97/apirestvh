@@ -150,7 +150,7 @@ class EventoClienteController extends Controller
         ->join('menuses','menuses.men_id','=','submenuses.men_id')
         ->where('sm_estado','=','Activo')
         ->where('sm_id','=',$sm_id)
-        ->get('men_cantidadPromedio');
+        ->SUM('men_cantidadPromedio');
         echo(json_encode($submenusPromedio));
     }
     public function inventarioSubmenuTabla($sm_id,$ec_fecha,$ec_fechaH){
