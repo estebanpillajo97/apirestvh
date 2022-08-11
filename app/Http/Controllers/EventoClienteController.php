@@ -145,6 +145,14 @@ class EventoClienteController extends Controller
 
         echo(json_encode($submenusNinios));
     }
+    public function inventarioSubmenus(){
+        $submenusPromedio=DB::table('submenuses')
+        ->join('menuses','menuses.men_id','=','submenuses.men_id')
+        ->where('sm_estado','=','Activo')
+        ->where('sm_id','=',$sm_id)
+        ->get('men_cantidadPromedio');
+        echo(json_encode($submenusPromedio));
+    }
     public function inventarioSubmenuTabla($sm_id,$ec_fecha,$ec_fechaH){
         $datosEventoCliente = DB::table('evento_clientes')->join('eventos','eventos.eve_id','=','evento_clientes.eve_id')
         ->join('submenuses','submenuses.sm_id','=','evento_clientes.sm_id')
