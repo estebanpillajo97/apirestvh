@@ -145,7 +145,7 @@ class EventoClienteController extends Controller
 
         echo(json_encode($submenusNinios));
     }
-    public function inventarioSubmenus(){
+    public function inventarioSubmenus($sm_id){
         $submenusPromedio=DB::table('submenuses')
         ->join('menuses','menuses.men_id','=','submenuses.men_id')
         ->where('sm_estado','=','Activo')
