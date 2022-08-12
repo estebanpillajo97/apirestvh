@@ -51,7 +51,7 @@ Route::get('/submenu_inventario_adultos/{sm_id}_{ec_fecha}_{ec_fechaH}','EventoC
 Route::get('/submenu_inventario_ninios/{sm_id}_{ec_fecha}_{ec_fechaH}','EventoClienteController@inventarioSubmenuNinios');
 Route::get('/submenu_inventario_tabla/{sm_id}_{ec_fecha}_{ec_fechaH}','EventoClienteController@inventarioSubmenuTabla');
 Route::get('/submenu_inventario_menus/{sm_id}','EventoClienteController@inventarioSubmenus');
-Route::get('/inventario_final/{sm_id}_{ec_fecha}_{ec_fechaH}','EventoController@inventarioFinal');
+Route::get('/inventario_final/{sm_id}_{ec_fecha}_{ec_fechaH}','EventoClienteController@inventarioFinal');
 Route::get('/reserva_cliente_aforo/{rc_fecha}_{rc_fechaH}', 'ReservaClienteController@inventarioAforo');
 Route::get('/submenus/listado','SubmenusController@mostrarTodo');
 Route::get('/salones','SalonesController@index');
