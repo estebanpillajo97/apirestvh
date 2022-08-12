@@ -154,9 +154,23 @@ class EventoClienteController extends Controller
         echo(json_encode($submenusPromedio));
     }
     public function inventarioFinal($sm_id,$ec_fecha,$ec_fechaH){
-        
-        $ninios=inventarioSubmenuNinios($sm_id,$ec_fecha,$ec_fechaH);
-        echo(json_encode($ninios));
+        $submenusAdultos=DB::table('evento_clientes')
+        ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
+        ->where('ec_estado','=','Activo')
+        ->where('sm_id','=',$sm_id)
+        ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('na_numeroAdultos');
+        $submenusNinios=DB::table('evento_clientes')
+        ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
+        ->where('ec_estado','=','Activo')
+        ->where('sm_id','=',$sm_id)
+        ->whereBetween('ec_fecha',[$ec_fecha,$ec_fechaH])->sum('nn_numeroNinios');
+        $submenusPromedio=DB::table('submenuses')
+        ->join('menuses','menuses.men_id','=','submenuses.men_id')
+        ->where('sm_estado','=','Activo')
+        ->where('sm_id','=',$sm_id)
+        ->SUM('men_cantidadPromedio');
+        $TotalFinal=$submenusPromedio-$submenusNinios-$submenusAdultos;
+        echo(json_encode($TotalFinal));
     }
     public function inventarioSubmenuTabla($sm_id,$ec_fecha,$ec_fechaH){
         $datosEventoCliente = DB::table('evento_clientes')->join('eventos','eventos.eve_id','=','evento_clientes.eve_id')
