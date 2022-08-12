@@ -153,6 +153,11 @@ class EventoClienteController extends Controller
         ->SUM('men_cantidadPromedio');
         echo(json_encode($submenusPromedio));
     }
+    public function inventarioFinal($sm_id,$ec_fecha,$ec_fechaH){
+        
+        $ninios=inventarioSubmenuNinios($sm_id,$ec_fecha,$ec_fechaH);
+        echo(json_encode($ninios));
+    }
     public function inventarioSubmenuTabla($sm_id,$ec_fecha,$ec_fechaH){
         $datosEventoCliente = DB::table('evento_clientes')->join('eventos','eventos.eve_id','=','evento_clientes.eve_id')
         ->join('submenuses','submenuses.sm_id','=','evento_clientes.sm_id')
