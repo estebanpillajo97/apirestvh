@@ -21,6 +21,7 @@ class ReservaClienteController extends Controller
         ->join('reservaciones','reservaciones.res_id','=','reserva_clientes.res_id')
         ->join('tipo_cedulas','tipo_cedulas.tc_id','=','reserva_clientes.tc_id')
         ->join('num_personas_res','num_personas_res.np_id','=','reserva_clientes.np_id')
+        ->join('salones','salones.sa_id','=','reserva_clientes.sa_id')
         ->reorder('rc_fecha','desc')->get();
         echo(json_encode($datosReservaCliente));
     }
