@@ -28,6 +28,7 @@ class CreateEventoClientesTable extends Migration
             $table->integer('tc_id');
             $table->integer('na_id');
             $table->integer('nn_id');
+            $table->integer('sa_id');
             $table->timestamps();
         });
     }

@@ -23,6 +23,7 @@ class CreateReservaClientesTable extends Migration
             $table->integer('np_id');
             $table->date('rc_fecha');
             $table->time('rc_hora');
+            $table->integer('sa_id');
             $table->string('rc_descripcion');
             $table->string('rc_estado');
             $table->timestamps();
