@@ -139,20 +139,20 @@ class ReservaClienteController extends Controller
         ->join('num_personas_res','num_personas_res.np_id','=','reserva_clientes.np_id')
         ->join('salones','salones.sa_id','=','evento_clientes.sa_id')
         ->where('rc_estado','=','Activo')
-        ->where('sa_id','=',$sa_id)
+        ->where('salones.sa_id','=',$sa_id)
         ->whereBetween('rc_fecha',[$rc_fecha,$rc_fechaH])->sum('np_numeroPersonas');
         echo(json_encode($reservaCliente));
         $submenusAdultos=DB::table('evento_clientes')
         ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
         ->join('salones','salones.sa_id','=','evento_clientes.sa_id')
         ->where('ec_estado','=','Activo')
-        ->where('sa_id','=',$sa_id)
+        ->where('salones.sa_id','=',$sa_id)
         ->whereBetween('ec_fecha',[$rc_fecha,$rc_fechaH])->sum('na_numeroAdultos');
         $submenusNinios=DB::table('evento_clientes')
         ->join('num_ninios','num_ninios.nn_id','=','evento_clientes.nn_id')
         ->join('salones','salones.sa_id','=','evento_clientes.sa_id')
         ->where('ec_estado','=','Activo')
-        ->where('sa_id','=',$sa_id)
+        ->where('salones.sa_id','=',$sa_id)
         ->whereBetween('ec_fecha',[$rc_fecha,$rc_fechaH])->sum('nn_numeroNinios');
 
         $salidaTotal=$reservaCliente+$submenusAdultos+$submenusNinios;
