@@ -141,7 +141,6 @@ class ReservaClienteController extends Controller
         ->where('rc_estado','=','Activo')
         ->where('salones.sa_id','=',$sa_id)
         ->whereBetween('rc_fecha',[$rc_fecha,$rc_fechaH])->sum('np_numeroPersonas');
-        echo(json_encode($reservaCliente));
         $submenusAdultos=DB::table('evento_clientes')
         ->join('num_adultos','num_adultos.na_id','=','evento_clientes.na_id')
         ->join('salones','salones.sa_id','=','evento_clientes.sa_id')
