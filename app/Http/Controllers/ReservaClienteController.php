@@ -137,7 +137,7 @@ class ReservaClienteController extends Controller
     public function inventarioAforo($sa_id,$rc_fecha,$rc_fechaH){
         $reservaCliente=DB::table('reserva_clientes')
         ->join('num_personas_res','num_personas_res.np_id','=','reserva_clientes.np_id')
-        ->join('salones','salones.sa_id','=','evento_clientes.sa_id')
+        ->join('salones','salones.sa_id','=','reserva_clientes.sa_id')
         ->where('rc_estado','=','Activo')
         ->where('salones.sa_id','=',$sa_id)
         ->whereBetween('rc_fecha',[$rc_fecha,$rc_fechaH])->sum('np_numeroPersonas');
