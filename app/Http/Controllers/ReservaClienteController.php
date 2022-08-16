@@ -153,9 +153,14 @@ class ReservaClienteController extends Controller
         ->where('ec_estado','=','Activo')
         ->where('salones.sa_id','=',$sa_id)
         ->whereBetween('ec_fecha',[$rc_fecha,$rc_fechaH])->sum('nn_numeroNinios');
-
+        $datosAforo = DB::table('salones')
+        ->where('sa_estado','=','Activo')
+        ->where('sa_disponibilidad','=','Disponible')
+        ->SUM('sa_capacidad');
+        echo(json_encode($datosAforo));
         $salidaTotal=$reservaCliente+$submenusAdultos+$submenusNinios;
-        echo(json_encode($salidaTotal));
+        $Total=$datosAforo-$salidaTotal;
+        echo(json_encode($Total));
     }
     /**
      * Remove the specified resource from storage.
