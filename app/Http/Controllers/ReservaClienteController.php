@@ -88,7 +88,7 @@ class ReservaClienteController extends Controller
      * @param  \App\ReservaCliente  $reservaCliente
      * @return \Illuminate\Http\Response
      */
-    public function update($rc_id)
+    public function update($rc_id,Request $request)
     {
         //
         $datosReservaCliente = request()->except(['_token','_method']);
