@@ -56,7 +56,6 @@ Route::get('/inventario_aforo/{sa_id}_{rc_fecha}_{rc_fechaH}', 'ReservaClienteCo
 Route::get('/submenus/listado','SubmenusController@mostrarTodo');
 Route::get('/salones','SalonesController@index');
 Route::get('/aforo_reservas_eventos/{fecha}','SalonesController@aforoReservasEventos');
-Route::get('/comprobanteReservaCliente/{rc_id}','ReservaClienteController@comprobanteReserva');
 //Route::post('/usuarios_verify','UsuariosController@verificar');
 
 //crear
