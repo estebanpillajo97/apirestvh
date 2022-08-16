@@ -23,6 +23,7 @@ class SalonesController extends Controller
         $datosAforo = DB::table('salones')
         ->where('sa_estado','=','Activo')
         ->where('sa_disponibilidad','=','Disponible')
+        ->where('sa_capacidad','>','0')
         ->SUM('sa_capacidad');
         echo(json_encode($datosAforo));
     }
