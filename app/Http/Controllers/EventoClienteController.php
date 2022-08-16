@@ -46,7 +46,9 @@ class EventoClienteController extends Controller
     {
         //
         $datosEventoCliente = request()->except(['_token','eve_nombre','eve_descripcion','eve_estado','arr_nombre','arr_descripcion','arr_estado','men_id']);
-
+        if($request->hasFile('ec_comprobante')){
+            $datosEventoCliente['ec_comprobante']=$request->file('ec_comprobante')->store('comprobante','public');
+        }
         EventoCliente::insert($datosEventoCliente);
     }
 
@@ -81,11 +83,14 @@ class EventoClienteController extends Controller
      * @param  \App\EventoCliente  $eventoCliente
      * @return \Illuminate\Http\Response
      */
-    public function update($ec_id)
+    public function update($ec_id,Request $request)
     {
         //
         $datosEventoCliente = request()->except(['_token','_method']);
-        
+        if($request->hasFile('ec_comprobante')){
+            
+            $datosEventoCliente['ec_comprobante']=$request->file('ec_comprobante')->store('comprobante','public');
+        }
         EventoCliente::where('ec_id','=',$ec_id)->update($datosEventoCliente);
     }
 
