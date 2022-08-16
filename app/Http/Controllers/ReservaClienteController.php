@@ -157,7 +157,6 @@ class ReservaClienteController extends Controller
         ->where('sa_estado','=','Activo')
         ->where('sa_disponibilidad','=','Disponible')
         ->SUM('sa_capacidad');
-        echo(json_encode($datosAforo));
         $salidaTotal=$reservaCliente+$submenusAdultos+$submenusNinios;
         $Total=$datosAforo-$salidaTotal;
         echo(json_encode($Total));
