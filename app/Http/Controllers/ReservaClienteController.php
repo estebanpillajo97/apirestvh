@@ -24,6 +24,10 @@ class ReservaClienteController extends Controller
         ->reorder('rc_fecha','desc')->get();
         echo(json_encode($datosReservaCliente));
     }
+    public function comprobanteReserva($rc_id){
+        $datosReservaCliente = DB::select('select rc_comprobante from reserva_clientes where rc_id = ?',[$rc_id]);
+        echo(json_encode($datosReservaCliente));
+    }
 
     /**
      * Show the form for creating a new resource.
