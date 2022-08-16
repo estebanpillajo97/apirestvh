@@ -88,7 +88,6 @@ class EventoClienteController extends Controller
         //
         $datosEventoCliente = request()->except(['_token','_method']);
         if($request->hasFile('ec_comprobante')){
-            
             $datosEventoCliente['ec_comprobante']=$request->file('ec_comprobante')->store('comprobante','public');
         }
         EventoCliente::where('ec_id','=',$ec_id)->update($datosEventoCliente);
