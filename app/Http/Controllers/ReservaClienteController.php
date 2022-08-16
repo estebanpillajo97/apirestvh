@@ -156,6 +156,7 @@ class ReservaClienteController extends Controller
         $datosAforo = DB::table('salones')
         ->where('sa_estado','=','Activo')
         ->where('sa_disponibilidad','=','Disponible')
+        ->where('sa_id','=',$sa_id)
         ->SUM('sa_capacidad');
         $salidaTotal=$reservaCliente+$submenusAdultos+$submenusNinios;
         $Total=$datosAforo-$salidaTotal;
