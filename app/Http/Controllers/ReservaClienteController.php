@@ -94,7 +94,7 @@ class ReservaClienteController extends Controller
         $datosReservaCliente = request()->except(['_token','_method']);
         if($request->hasFile('rc_comprobante')){
             
-            $datosMenus['rc_comprobante']=$request->file('rc_comprobante')->store('comprobante','public');
+            $datosReservaCliente['rc_comprobante']=$request->file('rc_comprobante')->store('comprobante','public');
         }
         ReservaCliente::where('rc_id','=',$rc_id)->update($datosReservaCliente);
     }
