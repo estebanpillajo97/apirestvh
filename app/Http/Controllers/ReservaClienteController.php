@@ -21,8 +21,11 @@ class ReservaClienteController extends Controller
         ->join('reservaciones','reservaciones.res_id','=','reserva_clientes.res_id')
         ->join('tipo_cedulas','tipo_cedulas.tc_id','=','reserva_clientes.tc_id')
         ->join('num_personas_res','num_personas_res.np_id','=','reserva_clientes.np_id')
-        
         ->reorder('rc_fecha','desc')->get();
+        echo(json_encode($datosReservaCliente));
+    }
+    public function comprobanteReserva($rc_id){
+        $datosReservaCliente = DB::select('select rc_comprobante from reserva_clientes where rc_id = ?',[$rc_id]);
         echo(json_encode($datosReservaCliente));
     }
 
