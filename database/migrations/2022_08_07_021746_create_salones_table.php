@@ -18,7 +18,7 @@ class CreateSalonesTable extends Migration
             $table->string('sa_nombre');
             $table->integer('sa_capacidad');
             $table->string('sa_disponibilidad');
-            $table->string('estado');
+            $table->string('sa_estado');
             $table->timestamps();
         });
     }
